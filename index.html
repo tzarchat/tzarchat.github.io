@@ -1,0 +1,252 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=iso-8859-2" />
+		<meta name="Author" content="Bimbol" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Tzar Chat - Home</title>
+	</head>
+	<body>
+		<div id="logo_bg" />
+		<div id="wrapper">
+			<div id="logo"></div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="download.html">Download</a></li>
+					<li><a href="bugs.html">Bugs</a></li>
+					<li><a href="faq.html">FAQ</a></li>
+					<li><a href="authors.html">Authors</a></li>
+				</ul>
+			</div>
+			<center>
+			<div id="info">
+			Current version: Beta 7
+			</div>
+			<div id="info">
+			Server: <font color=lime>ONLINE</font><br>
+			<?php
+				ini_set('display_errors', 1);
+				$connection = null;
+
+				function connect($server, $user, $password, $db)
+				{
+					global $connection;
+					$connection = mysql_connect($server, $user, $password);
+					if($connection){
+						if(mysql_select_db($db, $connection)){
+							return true;
+						}
+						else{
+							mysql_close($connection);
+							return false;
+						}
+					}
+				}
+			   
+				function disconnect()
+				{
+					global $connection;
+					if($connection){
+						mysql_close($connection);
+					}
+				}
+				
+				connect('localhost', '807266', 'gokussj2', '807266') or die('Could not connect to the data base');
+				
+				$result = mysql_query('SELECT online_count FROM tc_Online;') or die(mysql_error());
+				$row = mysql_fetch_array($result);
+				
+				echo 'User online: '.$row['online_count'];
+			?>
+			</div>
+			<div id="info">
+			<a href="#News">Go to News</a>
+			</div>
+			</center>
+			<div id="slider">
+				<!-- Sildes -->
+				<img id="one" src="gallery/1.png" />
+				<img id="two" src="gallery/2.png" />
+				<img id="three" src="gallery/3.png" />
+				<img id="four" src="gallery/4.png" />
+				<img id="five" src="gallery/5.png" />
+				
+				<!-- Links for the slides! -->
+				<ul>
+					<li>
+						<a href="#one"></a>
+					</li>
+					<li>
+						<a href="#two"></a>
+					</li>
+					<li>
+						<a href="#three"></a>
+					</li>
+					<li>
+						<a href="#four"></a>
+					</li>
+					<li>
+						<a href="#five"></a>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="block">
+				<div id="text">
+					<b>Recommended Sites</b>
+					<table border=0>
+						<tr>
+							<td>
+								<div id="recommended_sites">
+								Nehnon website (Statistic):<br>
+								<a href="http://tzar.nehhon.com/">http://tzar.nehhon.com/</a>
+								</div>
+							</td>
+							<td>
+								<div id="recommended_sites">
+								Maps:<br>
+								<a href="http://tzarmaps.site40.net/">http://tzarmaps.site40.net/</a>
+								</div>
+							</td>
+							<td>
+								<div id="recommended_sites">
+								Tzarean (Tzar 2):<br>
+								<a href="http://tzarean.jimdo.com/">http://tzarean.jimdo.com/</a>
+								</div>
+							</td>
+							<td>
+								<div id="recommended_sites">
+								TzarJS:<br>
+								<a href="https://twitter.com/TzarJS">https://twitter.com/TzarJS</a>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<a name="News"></a>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat (Beta 7) Release (31.01.2015)</h2>
+				<b>Changelog:</b>
+				<ul>
+					<li>Fixed bug with channels description</li>
+					<li>Now TC geometry will be automatic saved</li>
+					<li>Fixed bug with wrong channel tab, after joining to channel</li>
+					<li>Fixed crashes with PM, during reconnecting to the server</li>
+					<li>Added hierarchy of ranks</li>
+				</ul>
+				</div>
+			</div>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat (Beta 6) Release (17.01.2015)</h2>
+				Fix to version Beta 6<br>
+				<br>
+				<b>Changelog:</b>
+				<ul>
+					<li>Favorite Channels added</li>
+					<li>Go to game - special option to call players to game</li>
+					<li>Channels list now support HTML</li>
+					<li>Fixed crashes with sound</li>
+					<li>Fixed bug with blocking users</li>
+					<li>Fixed bug with PM sound</li>
+				</ul>
+				</div>
+			</div>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat (Beta 5.1) Release (12.01.2015)</h2>
+				Fix to version Beta 5<br>
+				<br>
+				<b>Changelog:</b>
+				<ul>
+					<li>Fixed bug in private message</li>
+					<li>Fixed bug with "enters" on channels list</li>
+					<li>Fixed bug with file downloader</li>
+				</ul>
+				</div>
+			</div>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat (Beta 5) Release (10.01.2015)</h2>
+				New update is finnaly avaiable!<br>
+				<br>
+				<b>Changelog:</b>
+				<ul>
+					<li>Fixed some bugs, with status</li>
+					<li>Disabled Windows cloud while user has "In Game" status</li>
+					<li>Repair private message, now should work fine</li>
+					<li>Repair online counter on this website</li>
+				</ul>
+				</div>
+			</div>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat (Beta 4) Release (07.01.2015)</h2>
+				Time to update!<br>
+				<br>
+				<b>Changelog:</b>
+				<ul>
+					<li>Fixed crashes, now everything should work fine</li>
+					<li>Fixed bug, with kicking from the channel</li>
+					<li>New feature - Auto update</li>
+				</ul>
+				</div>
+			</div>
+			<div id="block">
+				<div id="text">
+				<h2>Tzar Chat Release (05.01.2015)</h2>
+				Today, after many hardships, the fruit of our work will see the light of day.
+				Tzar Chat is a program that aims to unite all players scattered in various communicators.
+				We know that cannot be restored Tzar golden years, but we still believe that the Tzar lives and we will support it.<br>
+				<br>
+				<b>Tzar Chat (Beta 3)</b>, this is the first official release, along with the official <b>Tzar Chat</b> server.<br>
+				<u>The server will be opened on 5 January at 16:00</u><br>
+				<br>
+				<b>Client functionality:</b>
+				<ul>
+					<li>Create channels</li>
+					<li>Private messages</li>
+					<li>User accounts</li>
+					<li>Ranks and permissions</li>
+					<li>Status system</li>
+					<li>Sounds of Tzar</li>
+					<li>Multi-language</li>
+					<li>Detecting AFK</li>
+					<li>Emoticons</li>
+					<li>Pokes</li>
+					<li>Backup message</li>
+					<li>Sharing games</li>
+					<li>Extensive options</li>
+				</ul>
+				<b>Server functionality:</b>
+				<ul>
+					<li>Creating ranks in .xml file</li>
+					<li>Server configuration</li>
+					<li>Log system</li>
+					<li>Sending data to web, using php-get method</li>
+				</ul>
+				<b>Technology:</b>
+				<ul>
+					<li>Client developed in C++, with libraries:</li>
+						<ul>
+							<li>Qt 5.4</li>
+							<li>RakNet 4.081</li>
+							<li>irrKlang 1.5</li>
+							<li>OpenSSL v1.0.1i</li>
+						</ul>
+					<li>Server developed in C++, with libraries:</li>
+						<ul>
+							<li>Qt 5.4</li>
+							<li>RakNet 4.081</li>
+							<li>OpenSSL v1.0.1i</li>
+						</ul>
+				</ul>
+				</div>
+			</div>
+			<div id="content">
+			</div>
+		</div>
+	</body>
+</html>
