@@ -24,40 +24,6 @@
 			</div>
 			<div id="info">
 			Server: <font color=lime>ONLINE</font><br>
-			<?php
-				ini_set('display_errors', 1);
-				$connection = null;
-
-				function connect($server, $user, $password, $db)
-				{
-					global $connection;
-					$connection = mysql_connect($server, $user, $password);
-					if($connection){
-						if(mysql_select_db($db, $connection)){
-							return true;
-						}
-						else{
-							mysql_close($connection);
-							return false;
-						}
-					}
-				}
-			   
-				function disconnect()
-				{
-					global $connection;
-					if($connection){
-						mysql_close($connection);
-					}
-				}
-				
-				connect('localhost', '807266', 'gokussj2', '807266') or die('Could not connect to the data base');
-				
-				$result = mysql_query('SELECT online_count FROM tc_Online;') or die(mysql_error());
-				$row = mysql_fetch_array($result);
-				
-				echo 'User online: '.$row['online_count'];
-			?>
 			</div>
 			<div id="info">
 			<a href="#News">Go to News</a>
